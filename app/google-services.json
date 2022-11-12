@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "103335922260",
+    "project_id": "the-yaker",
+    "storage_bucket": "the-yaker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103335922260:android:b8e0e61532dc43cbb03bc1",
+        "android_client_info": {
+          "package_name": "com.example.yaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103335922260-9tt2clbovtst655arud0kofv7p8cv1rj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yaker",
+            "certificate_hash": "063e2c68db09db79b84fbcbcdb09d5b27b20f3d2"
+          }
+        },
+        {
+          "client_id": "103335922260-qibup242r1c43po3log41og87mtubdjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh8zbbx8uQXucY17QCsZuFYoe-A3A-sHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103335922260-qibup242r1c43po3log41og87mtubdjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
