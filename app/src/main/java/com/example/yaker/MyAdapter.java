@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Chat chat = list.get(position);
         holder.chatMessage.setText(chat.getChat());
         holder.likesText.setText(chat.getLikes());
+        if (chat.isWillie()){
+            holder.willieImage.setVisibility(View.VISIBLE);
+        }
+
 
     }
 
@@ -45,12 +50,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView chatMessage,likesText;
-
+        ImageView willieImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             chatMessage = itemView.findViewById(R.id.ChatText);
             likesText = itemView.findViewById(R.id.likesText);
+            willieImage = itemView.findViewById(R.id.willyImage);
 
         }
     }
