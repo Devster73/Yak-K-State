@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.common.data.DataBufferSafeParcelable;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,20 +23,30 @@ import com.google.firebase.database.ValueEventListener;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 public class ChatList extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseReference database;
+
     MyAdapter myAdapter;
     ArrayList<Chat> list;
+
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_list);
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        mAuth.signInAnonymously();
+        Log.d("Test",mAuth.getCurrentUser().getUid());
 
         recyclerView = findViewById(R.id.chatList);
         database = FirebaseDatabase.getInstance().getReference("Messages");
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -59,17 +72,27 @@ public class ChatList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-                Log.d("mia",snapshot.getChildrenCount() + " OLD");
+
+                Chat c = new Chat();
+                c.chatMessage = snapshot.child("Willie").child("chat").getValue().toString();
+                c.willie = true;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
-                    Chat chat = new Chat();
-                    chat.chatMessage = dataSnapshot.child("chat").getValue().toString();
-                    chat.likes = Integer.parseInt(dataSnapshot.child("likes").getValue().toString());
 
-                    Log.d("mia" , chat.chatMessage + " MSG");
-                    list.add(chat);
+                    if (!dataSnapshot.getKey().equals("Willie")){
+                        Log.d("TAG",dataSnapshot.getKey());
+                        Chat chat = new Chat();
+                        chat.chatMessage = dataSnapshot.child("chat").getValue().toString();
+                        chat.likes = Integer.parseInt(dataSnapshot.child("likes").getValue().toString());
+
+                        Log.d("mia" , chat.chatMessage + " MSG");
+                        list.add(chat);
+                    }
+
 
                 }
+
+                list.add(c);
                 Collections.reverse(list);
                 myAdapter.notifyDataSetChanged();
             }
