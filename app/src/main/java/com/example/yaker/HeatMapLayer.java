@@ -26,8 +26,8 @@ public class HeatMapLayer {
     List<LatLng> latLngs = null;
 
     int[] colors = {
-            Color.rgb(102, 10, 200), // green
-            Color.rgb(10, 0, 150)   // red
+            Color.rgb(81, 40, 136), // green
+            Color.rgb(201, 160, 255)   // red
     };
 
     float[] startPoints = {
