@@ -1,20 +1,27 @@
 [
   {
-    "featureType": "all",
-    "stylers": [
-      { "color": "#DE57FF" }
-    ]
-  },{
-  "featureType": "road.arterial",
-  "elementType": "geometry",
+  "featureType": "road",
+  "elementType": "geometry.fill",
   "stylers": [
     { "color": "#DE57FF" }
   ]
 },{
-  "featureType": "landscape",
-  "elementType": "labels",
+  "featureType": "road.local",
+  "elementType": "geometry",
   "stylers": [
-    { "color": "#211F21" }
+    { "color": "#000000" }
+  ]
+},{
+  "featureType": "landscape",
+  "elementType": "geometry",
+  "stylers": [
+    { "color": "#363636"}
+  ]
+},{
+  "featureType": "water",
+  "elementType": "geometry",
+  "stylers": [
+    { "color": "#000000" }
   ]
 }
 ]
