@@ -71,7 +71,7 @@
 
                 android:layout_weight=".8"
                 android:backgroundTint="#00676767"
-                app:icon="@android:drawable/ic_menu_send" />
+                app:icon="@drawable/asset15" />
 
         </LinearLayout>
 
