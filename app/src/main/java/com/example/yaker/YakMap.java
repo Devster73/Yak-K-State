@@ -5,13 +5,16 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class YakMap extends FragmentActivity implements OnMapReadyCallback {
@@ -29,7 +32,13 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        // Customise the styling of the base map using a JSON object defined
+        // in a raw resource file.
+        boolean success = googleMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                        this, R.raw.style_json));
         map = googleMap;
+
 
         LatLng India = new LatLng(19.169257, 73.341601);
         map.addMarker(new MarkerOptions().position(India).title("India"));
