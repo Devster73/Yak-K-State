@@ -16,6 +16,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.TileOverlay;
+import com.google.android.gms.maps.model.TileOverlayOptions;
 
 public class YakMap extends FragmentActivity implements OnMapReadyCallback {
 
@@ -40,9 +42,11 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
         map = googleMap;
 
 
-        LatLng India = new LatLng(19.169257, 73.341601);
+        LatLng India = new LatLng(39.1836, 96.5717);
         map.addMarker(new MarkerOptions().position(India).title("India"));
         map.moveCamera(CameraUpdateFactory.newLatLng(India));
+        TileOverlay overlay = map.addTileOverlay(new TileOverlayOptions().tileProvider(HeatMapLayer.HeatLayer()));
+
     }
     /*
     @Override

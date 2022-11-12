@@ -23,20 +23,20 @@ import java.util.Scanner;
 
 public class HeatMapLayer {
 
-    List<LatLng> latLngs = null;
+    static List<LatLng> latLngs = null;
 
-    int[] colors = {
+    static int[] colors = {
             Color.rgb(81, 40, 136), // green
             Color.rgb(201, 160, 255)   // red
     };
 
-    float[] startPoints = {
+    static float[] startPoints = {
             0.2f, 1f
     };
 
-    Gradient gradient = new Gradient(colors, startPoints);
+    static Gradient gradient = new Gradient(colors, startPoints);
 
-    private HeatmapTileProvider HeatLayer() {
+    public static HeatmapTileProvider HeatLayer() {
 
         latLngs.add(new LatLng(39.1836, 96.5717));
         latLngs.add(new LatLng(39.1837, 96.5718));
