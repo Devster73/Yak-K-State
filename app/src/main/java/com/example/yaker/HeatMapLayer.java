@@ -36,34 +36,23 @@ public class HeatMapLayer {
 
     Gradient gradient = new Gradient(colors, startPoints);
 
-    private void addHeatMap() {
+    private HeatmapTileProvider HeatLayer() {
 
-        try {
-            latLngs = readItems(R.raw.LatLang);
-        } catch (JSONException e) {
-            //Toast.makeText(context, "Problem reading list of locations.", Toast.LENGTH_LONG).show();
-        }
+        latLngs.add(new LatLng(39.1836, 96.5717));
+        latLngs.add(new LatLng(39.1837, 96.5718));
+        latLngs.add(new LatLng(39.1838, 96.5716));
+        latLngs.add(new LatLng(39.1835, 96.5719));
+
 
         HeatmapTileProvider provider = new HeatmapTileProvider.Builder()
                 .data(latLngs)
                 .gradient(gradient)
                 .build();
 
-        TileOverlay overlay = map.addTileOverlay(new TileOverlayOptions().tileProvider(provider));
+        return provider;
+
+        //TileOverlay overlay = map.addTileOverlay(new TileOverlayOptions().tileProvider(provider));
 
     }
 
-    private List<LatLng> readItems(@RawRes int resource) throws JSONException {
-        List<LatLng> result = new ArrayList<>();
-        InputStream inputStream = Context.getResources().openRawResource(resource);
-        String json = new Scanner(inputStream).useDelimiter("\\A").next();
-        JSONArray array = new JSONArray(json);
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject object = array.getJSONObject(i);
-            double lat = object.getDouble("lat");
-            double lng = object.getDouble("lng");
-            result.add(new LatLng(lat, lng));
-        }
-        return result;
-    }
 }
