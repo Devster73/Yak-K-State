@@ -1,6 +1,7 @@
 package com.example.yaker;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -18,8 +25,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Chat> list;
-
-
+    DatabaseReference database;
+    boolean canUpvote = true;
     public MyAdapter(Context context, ArrayList<Chat> list){
         this.context = context;
         this.list = list;
@@ -34,14 +41,55 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Chat chat = list.get(position);
+
         holder.chatMessage.setText(chat.getChat());
         holder.likesText.setText(chat.getLikes());
+
         if (chat.isWillie()){
             holder.willieImage.setVisibility(View.VISIBLE);
         }
+        holder.downvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database = FirebaseDatabase.getInstance().getReference("Messages");
+                database.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (holder.downvote.isEnabled()) {
+                            database.child(chat.getID()).child("likes").setValue((Integer.parseInt(snapshot.child(chat.getID()).child("likes").getValue().toString()) - 1));
+                            holder.downvote.setEnabled(false);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                database = FirebaseDatabase.getInstance().getReference("Messages");
+                database.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (holder.upvote.isEnabled()) {
+                                database.child(chat.getID()).child("likes").setValue((Integer.parseInt(snapshot.child(chat.getID()).child("likes").getValue().toString()) + 1));
+                                holder.upvote.setEnabled(false);
+                            }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
             }
         });

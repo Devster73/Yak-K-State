@@ -17,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlay;
@@ -43,6 +44,9 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
             }
         });
     }
+    public GoogleMap getMap(){
+        return map;
+    }
     public void  gotoChat(){
         Intent a = new Intent(this, ChatList.class);
         startActivity(a);
@@ -60,7 +64,10 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
         LatLng India = new LatLng(39.1836, 96.5717);
         map.addMarker(new MarkerOptions().position(India).title("India"));
         map.moveCamera(CameraUpdateFactory.newLatLng(India));
-        TileOverlay overlay = map.addTileOverlay(new TileOverlayOptions().tileProvider(HeatMapLayer.HeatLayer()));
+        map.setMinZoomPreference(6.0F);
+        map.setLatLngBoundsForCameraTarget(new LatLngBounds(new LatLng(39.11678, -96.75304), new LatLng(39.28516,-96.41371)));
+
+        map.addTileOverlay(new TileOverlayOptions().tileProvider(HeatMapLayer.HeatLayer()));
 
     }
     /*

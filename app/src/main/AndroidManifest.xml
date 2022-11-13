@@ -23,14 +23,14 @@
 
 
         <activity
-            android:name=".YakMap"
+            android:name=".ChatList"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChatList"
+            android:name=".YakMap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

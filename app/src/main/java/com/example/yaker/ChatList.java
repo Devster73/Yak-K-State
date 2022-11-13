@@ -42,9 +42,11 @@ public class ChatList extends AppCompatActivity {
         setContentView(R.layout.activity_chat_list);
         mAuth = FirebaseAuth.getInstance();
 
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         mAuth.signInAnonymously();
-        Log.d("Test",mAuth.getCurrentUser().getUid());
+
+
 
         recyclerView = findViewById(R.id.chatList);
         database = FirebaseDatabase.getInstance().getReference("Messages");
@@ -53,8 +55,9 @@ public class ChatList extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        myAdapter = new MyAdapter(this,list);
+        myAdapter = new MyAdapter(this, list);
         recyclerView.setAdapter(myAdapter);
+
 
         Button sendButton = (Button) findViewById(R.id.sendChat);
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -71,13 +74,15 @@ public class ChatList extends AppCompatActivity {
                 database.push().setValue(chat);
             }
         });
+
         ImageButton mapButton = (ImageButton) findViewById(R.id.mapButton);
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gotoMap();
+               gotoMap();
             }
         });
+
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -114,8 +119,14 @@ public class ChatList extends AppCompatActivity {
             }
         });
     }
+
     public void  gotoMap(){
         Intent a = new Intent(this, YakMap.class);
         startActivity(a);
     }
+
+
+
+
+
 }
