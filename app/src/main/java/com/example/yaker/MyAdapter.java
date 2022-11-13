@@ -44,6 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         holder.chatMessage.setText(chat.getChat());
         holder.likesText.setText(chat.getLikes());
+        holder.locationView.setText(chat.getLocation());
 
         if (chat.isWillie()){
             holder.willieImage.setVisibility(View.VISIBLE);
@@ -103,11 +104,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView chatMessage,likesText;
+        TextView chatMessage,likesText,locationView;
         ImageView willieImage;
         ImageButton upvote,downvote;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            locationView = itemView.findViewById(R.id.locationView);
             upvote = itemView.findViewById(R.id.upvoteBtn);
             downvote = itemView.findViewById(R.id.downvoteBtn);
             chatMessage = itemView.findViewById(R.id.ChatText);

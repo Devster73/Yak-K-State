@@ -28,8 +28,8 @@ public class HeatMapLayer {
 
 
     static int[] colors = {
-            Color.rgb(81, 40, 136), // green
-            Color.rgb(201, 160, 255)   // red
+            Color.rgb(201, 160, 255), //light purple
+             Color.rgb(81, 40, 136)  //dark purple
     };
 
     static float[] startPoints = {
@@ -41,7 +41,7 @@ public class HeatMapLayer {
     public static HeatmapTileProvider HeatLayer() {
         for (int i = 0; i < 500; i++){
 
-            latLngs.add(new LatLng((39.1836+(Math.random()*50)/1000),(96.5717+(Math.random()*50)/1000) ));
+            latLngs.add(new LatLng((39.1836-((Math.random()*50)/1000)+(Math.random()*50)/1000),(-96.5717-((Math.random()*50)/1000)+(Math.random()*50)/1000)));
 
         }
 

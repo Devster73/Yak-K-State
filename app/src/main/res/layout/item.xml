@@ -14,61 +14,68 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="2">
 
         <TextView
             android:id="@+id/ChatText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
             android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:autoSizeTextType="uniform"/>
+
+        <TextView
+            android:id="@+id/locationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location: Unknown"
             android:textColor="#FFFFFF" />
 
         <ImageView
             android:id="@+id/willyImage"
             android:layout_width="38dp"
             android:layout_height="25dp"
+            android:layout_weight=".25"
             android:visibility="gone"
             app:srcCompat="@drawable/caty" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight=".7"
             android:orientation="horizontal"
-            android:weightSum="6">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.3"
-                app:srcCompat="@drawable/asset8" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".6" />
+            android:weightSum="2">
 
             <ImageButton
                 android:id="@+id/upvoteBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".5"
+                android:layout_weight=".25"
+                android:background="#00FFFFFF"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/asset17" />
 
             <TextView
                 android:id="@+id/likesText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_weight=".25"
                 android:text="10"
-                android:textColor="#FFFFFF" />
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <ImageButton
                 android:id="@+id/downvoteBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".5"
+                android:layout_weight=".25"
+                android:background="#00FFFFFF"
+                android:rotation="180"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/asset17" />
 
         </LinearLayout>

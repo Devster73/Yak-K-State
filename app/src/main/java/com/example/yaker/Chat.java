@@ -6,8 +6,12 @@ public class Chat {
     String chatMessage;
     int likes;
     boolean willie = false;
+    String location;
     String ID;
     ArrayList<String> comments;
+    public String getLocation(){
+        return location;
+    }
 
     public String getChat(){
         return chatMessage;

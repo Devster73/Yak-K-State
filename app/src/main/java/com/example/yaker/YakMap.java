@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,7 +37,7 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        Button btn = (Button) findViewById(R.id.button2);
+        ImageButton btn = (ImageButton) findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,11 +62,11 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
         map = googleMap;
 
 
-        LatLng India = new LatLng(39.1836, 96.5717);
+        LatLng India = new LatLng(39.1836, -96.5717);
         map.addMarker(new MarkerOptions().position(India).title("India"));
         map.moveCamera(CameraUpdateFactory.newLatLng(India));
-        map.setMinZoomPreference(6.0F);
-        map.setLatLngBoundsForCameraTarget(new LatLngBounds(new LatLng(39.11678, -96.75304), new LatLng(39.28516,-96.41371)));
+       // map.setMinZoomPreference(6.0F);
+      //  map.setLatLngBoundsForCameraTarget(new LatLngBounds(new LatLng(39.11678, -96.75304), new LatLng(39.28516,-96.41371)));
 
         map.addTileOverlay(new TileOverlayOptions().tileProvider(HeatMapLayer.HeatLayer()));
 

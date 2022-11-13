@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8C8C8C"
+        android:background="#1C1C1C"
         android:orientation="vertical"
         android:weightSum="3"
         tools:layout_editor_absoluteX="2dp"
@@ -37,9 +37,9 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".2"
+                android:layout_weight=".8"
                 android:background="@drawable/rounded"
                 android:orientation="horizontal"
                 android:weightSum="1">
@@ -63,15 +63,14 @@
 
             </LinearLayout>
 
-            <Button
+            <ImageButton
                 android:id="@+id/sendChat"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-
-                android:layout_weight=".8"
-                android:backgroundTint="#00676767"
-                app:icon="@drawable/asset15" />
+                android:layout_weight=".2"
+                android:background="#1A1A1A"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/asset15" />
 
         </LinearLayout>
 
@@ -84,16 +83,21 @@
 
             <ImageButton
                 android:id="@+id/mapButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/asset10" />
+                android:background="#1A1A1A"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/asset13" />
 
             <ImageButton
                 android:id="@+id/chatButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#1A1A1A"
+                android:padding="15dp"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/asset8" />
         </LinearLayout>
 

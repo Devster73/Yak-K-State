@@ -59,7 +59,7 @@ public class ChatList extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
 
-        Button sendButton = (Button) findViewById(R.id.sendChat);
+        ImageButton sendButton = (ImageButton) findViewById(R.id.sendChat);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
