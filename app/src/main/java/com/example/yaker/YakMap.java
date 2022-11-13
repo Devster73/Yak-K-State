@@ -38,6 +38,7 @@ import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class YakMap extends FragmentActivity implements OnMapReadyCallback {
@@ -54,7 +55,20 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
 
     LocationCallback locationCallBack;
     private LocationManager locationManager;
+    public GoogleMap getMap(){
+        return map;
+    }
+    public void  gotoChat() {
+        Intent a = new Intent(this, ChatList.class);
+        startActivity(a);
+    }
+    public void temp(Location location, Dictionary<Str>, ArrayList<LatLng> buildingList){
+        LatLng loc = new LatLng(location.getLatitude(),location.getLongitude());
+        for (LatLng location  buildingList){
+            //if location is
+        }
 
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,30 +85,25 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
                 gotoChat();
             }
         });
-    }
-    public GoogleMap getMap(){
-        return map;
-    }
-    public void  gotoChat(){
-        Intent a = new Intent(this, ChatList.class);
-        startActivity(a);
+
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        if (ContextCompat.checkSelfPermission(YakMap.this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-            ContextCompat.checkSelfPermission(YakMap.this,Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
-ActivityCompat.requestPermissions(YakMap.this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},1);
+        if (ContextCompat.checkSelfPermission(YakMap.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(YakMap.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(YakMap.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 1, new LocationListener() {
-                    @Override
-                    public void onLocationChanged(@NonNull Location location) {
-                        LatLng Hat = new LatLng(location.getLatitude(),location.getLongitude());
-                        map.addMarker(new MarkerOptions().position(Hat).title("Manhattan"));
-                        Toast.makeText(YakMap.this,"Location: "+location,Toast.LENGTH_LONG).show();
-                    }
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                LatLng Hat = new LatLng(location.getLatitude(), location.getLongitude());
+                map.addMarker(new MarkerOptions().position(Hat).title("Manhattan"));
+                Toast.makeText(YakMap.this, "Location: " + location, Toast.LENGTH_LONG).show();
+            }
 
 
-                });
+        });
+
 
     /*
 
@@ -116,8 +125,8 @@ ActivityCompat.requestPermissions(YakMap.this,new String[]{Manifest.permission.A
             }
         };
         updateGPS();*/
-    }
 
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
