@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="#515151"
+    app:cardBackgroundColor="#313131"
     app:cardCornerRadius="8dp"
 
     app:cardElevation="8dp">
@@ -22,17 +22,17 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
+            android:autoSizeTextType="uniform"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:autoSizeTextType="uniform"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/locationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location: Unknown"
-            android:textColor="#FFFFFF" />
+            android:textColor="#D21AFF" />
 
         <ImageView
             android:id="@+id/willyImage"
@@ -43,11 +43,18 @@
             app:srcCompat="@drawable/caty" />
 
         <LinearLayout
+            android:id="@+id/likesLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight=".7"
             android:orientation="horizontal"
             android:weightSum="2">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2" />
 
             <ImageButton
                 android:id="@+id/upvoteBtn"

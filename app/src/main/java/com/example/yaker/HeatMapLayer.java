@@ -38,10 +38,10 @@ public class HeatMapLayer {
 
     static Gradient gradient = new Gradient(colors, startPoints);
 
-    public static HeatmapTileProvider HeatLayer() {
-        for (int i = 0; i < 500; i++){
+    public static HeatmapTileProvider HeatLayer(LatLng location, int spacing, int number) {
+        for (int i = 0; i < number; i++){
 
-            latLngs.add(new LatLng((39.1836-((Math.random()*50)/1000)+(Math.random()*50)/1000),(-96.5717-((Math.random()*50)/1000)+(Math.random()*50)/1000)));
+            latLngs.add(new LatLng((location.latitude-((Math.random()*50)/spacing)+(Math.random()*50)/spacing),(location.longitude-((Math.random()*50)/spacing)+(Math.random()*50)/spacing)));
 
         }
 

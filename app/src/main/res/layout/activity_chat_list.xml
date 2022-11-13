@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".41"
-            app:srcCompat="@drawable/yikyak" />
+            app:srcCompat="@drawable/yiker" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chatList"

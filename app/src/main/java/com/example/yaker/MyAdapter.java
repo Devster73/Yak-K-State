@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         if (chat.isWillie()){
             holder.willieImage.setVisibility(View.VISIBLE);
+            holder.linearView.setVisibility(View.GONE);
         }
         holder.downvote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +109,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView chatMessage,likesText,locationView;
         ImageView willieImage;
         ImageButton upvote,downvote;
+        LinearLayout linearView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            linearView = itemView.findViewById(R.id.likesLayout);
             locationView = itemView.findViewById(R.id.locationView);
             upvote = itemView.findViewById(R.id.upvoteBtn);
             downvote = itemView.findViewById(R.id.downvoteBtn);
