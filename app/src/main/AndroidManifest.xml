@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-=======
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
->>>>>>> 73831e7b33fb4663515c9c404056463306f266c5
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,14 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Yaker"
         tools:targetApi="31">
-<<<<<<< HEAD
-       
-=======
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key"/>
 
->>>>>>> 73831e7b33fb4663515c9c404056463306f266c5
         <activity
             android:name=".ChatList"
             android:exported="false">
