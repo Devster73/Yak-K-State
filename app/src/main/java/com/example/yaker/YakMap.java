@@ -4,10 +4,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,6 +24,7 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
 
     GoogleMap map;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,17 @@ public class YakMap extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Button btn = (Button) findViewById(R.id.button2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoChat();
+            }
+        });
+    }
+    public void  gotoChat(){
+        Intent a = new Intent(this, ChatList.class);
+        startActivity(a);
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {

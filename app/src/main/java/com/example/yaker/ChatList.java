@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.common.data.DataBufferSafeParcelable;
@@ -65,7 +67,15 @@ public class ChatList extends AppCompatActivity {
                 chat.likes = 3;
 
                 chat.chatMessage = chatMessage.getText().toString();
+
                 database.push().setValue(chat);
+            }
+        });
+        ImageButton mapButton = (ImageButton) findViewById(R.id.mapButton);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoMap();
             }
         });
         database.addValueEventListener(new ValueEventListener() {
@@ -76,6 +86,7 @@ public class ChatList extends AppCompatActivity {
                 Chat c = new Chat();
                 c.chatMessage = snapshot.child("Willie").child("chat").getValue().toString();
                 c.willie = true;
+
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
 
@@ -84,7 +95,7 @@ public class ChatList extends AppCompatActivity {
                         Chat chat = new Chat();
                         chat.chatMessage = dataSnapshot.child("chat").getValue().toString();
                         chat.likes = Integer.parseInt(dataSnapshot.child("likes").getValue().toString());
-
+                        chat.ID = dataSnapshot.getKey();
                         Log.d("mia" , chat.chatMessage + " MSG");
                         list.add(chat);
                     }
@@ -102,5 +113,9 @@ public class ChatList extends AppCompatActivity {
 
             }
         });
+    }
+    public void  gotoMap(){
+        Intent a = new Intent(this, YakMap.class);
+        startActivity(a);
     }
 }
